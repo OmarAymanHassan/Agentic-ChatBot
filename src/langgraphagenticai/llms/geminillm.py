@@ -19,7 +19,7 @@ class GeminiLLM:
                 return None
             
             llm = ChatGoogleGenerativeAI(
-                model_name=selected_gemini_model,
+                model=selected_gemini_model,
                 api_key=gemini_api_key
             )
         except Exception as e:

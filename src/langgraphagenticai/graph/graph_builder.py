@@ -32,4 +32,4 @@ class GraphBuilder:
         else:
             raise ValueError(f"Unsupported use case: {usecase}")
 
-        return self.graph_builder
+        return self.graph_builder.compile()

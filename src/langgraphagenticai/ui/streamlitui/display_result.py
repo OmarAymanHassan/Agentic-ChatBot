@@ -18,15 +18,14 @@ class DisplayResultStreamlit:
             for event in graph.stream({"messages": ("user", user_message)}):
                 print(event.values())
                 for value in event.values():
-                    print(value["message"])
+                    print(value["messages"])
                     with st.chat_message("user"):
                         st.write(user_message)
                     
                     with st.chat_message("assistant"):
-                        st.write(value["message"].content)
+                        st.write(value["messages"].content)
 
 
 
 
 
-                        
