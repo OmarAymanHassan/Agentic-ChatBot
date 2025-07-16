@@ -66,3 +66,4 @@ def load_langgraph_agenticai_app():
         except Exception as e:
             st.error(f"⚠️ An error occurred: {e}")
             return
+        

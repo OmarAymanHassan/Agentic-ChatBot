@@ -29,17 +29,22 @@ class LoadStreamlitUI:
                 self.user_controls["selected_groq_model"] = st.selectbox("Select Model", groq_model_options)
                 self.user_controls["GROQ_API_KEY"] =st.session_state["GROQ_API_KEY"]=st.text_input("API Key", type="password")
                 if not self.user_controls["GROQ_API_KEY"]:
-                    st.warning("⚠️ Please enter your Groq API Key to use the Groq model.")
+                    st.warning("⚠️ Please enter your Groq API Key to use the Groq model. Don't have one? refer : https://docs.groq.com/docs/groq-api-keys")
             elif self.user_controls["selected_llm"] == "Gemini":
                 gemini_model_options = self.config.get_gemini_model_options()
                 self.user_controls["selected_gemini_model"] = st.selectbox("Select Model", gemini_model_options)
                 self.user_controls["GEMINI_API_KEY"] = st.session_state["GEMINI_API_KEY"] = st.text_input("API Key", type="password")
                 if not self.user_controls["GEMINI_API_KEY"]:
-                    st.warning("⚠️ Please enter your Gemini API Key to use the Gemini model.")
+                    st.warning("⚠️ Please enter your Gemini API Key to use the Gemini model. Don't have one? refer : https://developers.google.com/generative-ai/console")
 
             ## Usecase Selection
 
             self.user_controls["selected_usecase"] = st.selectbox("Select Usecase", usecase_option)
+
+            if self.user_controls["selected_usecase"] == "Chatbot with web":
+                os.environ["TAVILY_API_KEY"] = self.user_controls["TAVILY_API_KEY"] = st.session_state["TAVILY_API_KEY"] = st.text_input("Tavily API Key", type="password")
+                if not self.user_controls["TAVILY_API_KEY"]:
+                    st.warning("⚠️ Please enter your Tavily API Key to use the Chatbot with web use case. Dont't have one? refer : https://app.tavily.com/home")
 
 
         return self.user_controls
