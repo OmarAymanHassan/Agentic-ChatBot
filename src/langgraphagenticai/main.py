@@ -25,7 +25,11 @@ def load_langgraph_agenticai_app():
     if not user_input:
         st.error("⚠️ Please select an LLM and a use case to proceed.")
         return 
-    user_message = st.chat_input("Enter your message:")
+    
+    if st.session_state.IsFetchButtonClicked:
+        user_message = st.session_state.time_frame
+    else:
+        user_message = st.chat_input("Enter your message:")
   
     if user_message:
         try:

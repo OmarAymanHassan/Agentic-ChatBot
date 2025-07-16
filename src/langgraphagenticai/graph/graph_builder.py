@@ -5,7 +5,7 @@ from src.langgraphagenticai.tools.search_tool import get_tools, create_tool_node
 from langgraph.graph import START, END
 from langgraph.prebuilt import tools_condition , ToolNode
 from src.langgraphagenticai.nodes.chatbot_with_tool_node import ChatbotWithToolNode
-
+from src.langgraphagenticai.nodes.ai_news_node import AINewsNode
 class GraphBuilder:
     def __init__(self, model):
         self.llm = model
@@ -48,13 +48,34 @@ class GraphBuilder:
         self.graph_builder.add_edge("chatbot", END)
 
 
+
+    def ai_news_build_graph(self):
+        """
+        Build a graph for AI News use case.
+        This is a placeholder for future implementation.
+        """
+        ai_news_node = AINewsNode(self.llm)
+
+        self.graph_builder.add_node("fetch_news",ai_news_node.fetch_news)
+        self.graph_builder.add_node("summarize_news",ai_news_node.summarize_news)
+        self.graph_builder.add_node("save_results",ai_news_node.save_results)
+
+        # Define the edges for the AI News graph
+        self.graph_builder.add_edge(START, "fetch_news")
+        self.graph_builder.add_edge("fetch_news", "summarize_news")
+        self.graph_builder.add_edge("summarize_news", "save_results")
+        self.graph_builder.add_edge("save_results", END)
+
+
     def setup_graph(self, usecase):
         """
         Setup the graph based on the use case.
         """
         if usecase == "Basic Chatbot":
             self.basic_chatot_build_graph()
-        elif usecase == "Chatbot with web":
+        if usecase == "Chatbot with web":
             self.chatbot_with_tools_build_graph()
+        if usecase == "AI News":
+            self.ai_news_build_graph()
 
         return self.graph_builder.compile()

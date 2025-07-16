@@ -41,6 +41,22 @@ class DisplayResultStreamlit:
                     with st.chat_message("assistant"):
                         st.write(message.content)
 
+        elif usecase == "AI News":
+            frequency = self.user_message
+            with st.spinner("Fetching & Summarizing AI News...⌛"):
+                result = graph.invoke({"messages": frequency})
+                try :
+
+                    AI_NEWS_PATH = f"./AINews/{frequency}_summary.md"
+                    with open(AI_NEWS_PATH, "r") as file:
+                        markdown_content = file.read()
+
+                    st.markdown(markdown_content, unsafe_allow_html=True)
+                except FileNotFoundError:
+                    st.error("⚠️ No news data found. Please try again later.")
+                except Exception as e:
+                    st.error(f"⚠️ An error occurred while displaying the news: {e}")
+                    
 
 
 
