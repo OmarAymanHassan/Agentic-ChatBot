@@ -3,6 +3,7 @@ langchain
 langsmith
 python-dotenv
 langchain-groq
+langchain_groq
 langchain_tavily
 mcp
 langchain-mcp-adapters
@@ -10,3 +11,8 @@ httpx
 google-genai
 langchain-google-genai
 langgraph-cli[inmem]
+langchain-community
+langchain-core
+streamlit 
+faiss-cpu
+tavily-python
