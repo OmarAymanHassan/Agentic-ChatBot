@@ -73,10 +73,16 @@ git clone https://github.com/OmarAymanHassan/Agentic-ChatBot/
 2. Enter the project Folder
 
 3. Install dependencies:
+
+- Using UV manager
+```bash
+    uv sync
+```
+- Using Python pip
    ```bash
    pip install -r requirments.txt
    ```
-4. Run the app:
+5. Run the app:
    ```bash
    streamlit run app.py
    ```
