@@ -73,7 +73,7 @@ AgenticAiChatbot/
    ```
 3. Run the app:
    ```bash
-   python app.py
+   streamlit run app.py
    ```
 
 ---
