@@ -67,11 +67,16 @@ AgenticAiChatbot/
 ## 📦 Setup & Installation
 
 1. Clone the repo
-2. Install dependencies:
+```bash
+git clone https://github.com/OmarAymanHassan/Agentic-ChatBot/
+```
+2. Enter the project Folder
+
+3. Install dependencies:
    ```bash
    pip install -r requirments.txt
    ```
-3. Run the app:
+4. Run the app:
    ```bash
    streamlit run app.py
    ```
