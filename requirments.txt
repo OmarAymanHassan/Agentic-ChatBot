@@ -16,3 +16,4 @@ langchain-core
 streamlit 
 faiss-cpu
 tavily-python
+langchain_community
